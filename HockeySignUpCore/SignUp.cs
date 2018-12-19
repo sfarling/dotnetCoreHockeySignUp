@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Configuration;
 using OpenQA.Selenium;
+using System.Reflection;
 
 namespace HockeySignUpCore
 {
@@ -11,7 +12,8 @@ namespace HockeySignUpCore
         public void signup (string URI)
         {
             // Initialize the Chrome Driver
-            using (var driver = new ChromeDriver("."))
+            using (var driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)))
+            //using (var driver = new ChromeDriver(""))
             {
                 // Go to the specific signup page
                 driver.Navigate().GoToUrl(URI);
@@ -31,11 +33,11 @@ namespace HockeySignUpCore
 
                 // Click the login button
                 loginButton.Click();
-                System.Threading.Thread.Sleep(250);
+                System.Threading.Thread.Sleep(100);
 
                 // Grab all the text within the body tag and re-try the login
                 int x = 1;
-                while (driver.FindElementByTagName("body").Text.Contains("Reservations may not be made until 24 hours prior to the start time of the class.") & (x <= 1500))
+                while (driver.FindElementByTagName("body").Text.Contains("Reservations may not be made until 24 hours prior to the start time of the class.") & (x <= 15000))
                 {
                     driver.Navigate().Back();
                     System.Threading.Thread.Sleep(250);
@@ -48,8 +50,9 @@ namespace HockeySignUpCore
                 //var result = driver.FindElementByXPath("//div[@id='case_login']/h3").Text;
                 //File.WriteAllText("result.txt", result);
 
-                // Take a screenshot and save it into screen.png
-                driver.GetScreenshot().SaveAsFile(@"screen.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
+                // Take a screenshot and save it into screen.png 
+                //driver.GetScreenshot().SaveAsFile(@"screen.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
+                driver.GetScreenshot().SaveAsFile(@"D:\repo\dotnetCoreHockeySignUp\HockeySignUpCore\bin\Debug\netcoreapp2.1\SPF.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
                 driver.Close();
             }
         }
