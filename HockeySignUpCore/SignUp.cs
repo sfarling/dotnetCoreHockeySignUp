@@ -40,7 +40,7 @@ namespace HockeySignUpCore
                 while (driver.FindElementByTagName("body").Text.Contains("Reservations may not be made until 24 hours prior to the start time of the class.") & (x <= 15000))
                 {
                     driver.Navigate().Back();
-                    System.Threading.Thread.Sleep(250);
+                    System.Threading.Thread.Sleep(100);
                     x++;
                     driver.FindElementByXPath("//button[@type='submit'][text()='Make Reservation']").Click();
                 }
