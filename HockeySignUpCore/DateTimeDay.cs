@@ -48,8 +48,12 @@ namespace HockeySignUpCore
                 return (ConfigurationManager.AppSettings["Tues"]);
 
             //Actual day is Tuesday + 2 days = Thursday signup 
-            else if (signUpDay == "Thursday")
+            else if (signUpDay == "Thursday" && DateTime.Now < dt8AM)
                 return (ConfigurationManager.AppSettings["Thurs"]);
+
+            //Actual day is Tuesday + 2 days = Thursday signup pm 
+            else if (signUpDay == "Thursday" && DateTime.Now > dt8AM)
+                return (ConfigurationManager.AppSettings["Thurspm"]);
 
             //Actual day is Wednesday + 2 days = Friday AM signup
             else if (signUpDay == "Friday" && DateTime.Now < dt8AM)
