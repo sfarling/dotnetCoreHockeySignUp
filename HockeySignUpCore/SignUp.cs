@@ -9,7 +9,7 @@ namespace HockeySignUpCore
 {
     class SignUp
     {
-        public void signup (string URI)
+        public void signup (string URI, string firstName, string lastName, string email)
         {
             // Initialize the Chrome Driver
             using (var driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)))
@@ -24,8 +24,10 @@ namespace HockeySignUpCore
                 var loginButton = driver.FindElementByXPath("//button[@type='submit'][text()='Make Reservation']");
 
                 // Type user name and password
-                userNameField.SendKeys(ConfigurationManager.AppSettings["name"]);
-                userPasswordField.SendKeys(ConfigurationManager.AppSettings["email"]);
+                //userNameField.SendKeys(ConfigurationManager.AppSettings["name"]);
+                //userPasswordField.SendKeys(ConfigurationManager.AppSettings["email"]);
+                userNameField.SendKeys(firstName + " " + lastName);
+                userPasswordField.SendKeys(email);
 
                 //check the time and wait until 07:00:00:01
                 //Helper h = new Helper();
@@ -51,8 +53,8 @@ namespace HockeySignUpCore
                 //File.WriteAllText("result.txt", result);
 
                 // Take a screenshot and save it into screen.png 
-                //driver.GetScreenshot().SaveAsFile(@"screen.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
-                driver.GetScreenshot().SaveAsFile(@"D:\repo\dotnetCoreHockeySignUp\HockeySignUpCore\bin\Debug\netcoreapp2.1\SPF.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
+                driver.GetScreenshot().SaveAsFile(@"ScreenShot.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
+                //driver.GetScreenshot().SaveAsFile(@"D:\repo\dotnetCoreHockeySignUp\HockeySignUpCore\bin\Debug\netcoreapp2.1\SPF.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
                 driver.Close();
             }
         }

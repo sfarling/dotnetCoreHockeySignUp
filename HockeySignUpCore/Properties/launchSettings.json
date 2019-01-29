@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HockeySignUpCore": {
+      "commandName": "Project",
+      "commandLineArgs": "Scott Farling scott@farling.com"
+    }
+  }
+}

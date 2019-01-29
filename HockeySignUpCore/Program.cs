@@ -7,6 +7,11 @@ namespace HockeySignUpCore
     {
         static void Main(string[] args)
         {
+            String firstName = args[0];
+            String lastName = args[1];
+            String email = args[2];
+
+
             DateTimeDay h = new DateTimeDay();
             //Get the signup date day of week and ID
             String signupDate = h.GetDate();
@@ -25,7 +30,7 @@ namespace HockeySignUpCore
 
             //Sign up
             SignUp s1 = new SignUp();
-            s1.signup(URI);
+            s1.signup(URI, firstName, lastName, email);
         }
     }
 }
