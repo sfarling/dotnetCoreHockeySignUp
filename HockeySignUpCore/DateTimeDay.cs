@@ -18,8 +18,8 @@ namespace HockeySignUpCore
         Get the time now
         Get the dif between now and 7:00:00:01 and wait that long before submission
         */
-        public void  GetTime()
-        {  
+        public void GetTime()
+        {
             DateTime requiredTime = DateTime.Today.AddHours(7).AddMinutes(00).AddSeconds(00).AddMilliseconds(01);
             DateTime currentTime = DateTime.Now;
             TimeSpan difference = requiredTime - currentTime;
@@ -43,7 +43,7 @@ namespace HockeySignUpCore
         {
             DateTime dt8AM = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 08, 0, 0);
             if
-             //Actual day is Sunday + 2 days = Tuesday signup
+            //Actual day is Sunday + 2 days = Tuesday signup
             (signUpDay == "Tuesday")
                 return (ConfigurationManager.AppSettings["Tues"]);
 

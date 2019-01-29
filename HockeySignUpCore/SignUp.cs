@@ -9,7 +9,7 @@ namespace HockeySignUpCore
 {
     class SignUp
     {
-        public void signup (string URI, string firstName, string lastName, string email)
+        public void signup(string URI, string firstName, string lastName, string email)
         {
             // Initialize the Chrome Driver
             using (var driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)))
@@ -24,8 +24,6 @@ namespace HockeySignUpCore
                 var loginButton = driver.FindElementByXPath("//button[@type='submit'][text()='Make Reservation']");
 
                 // Type user name and password
-                //userNameField.SendKeys(ConfigurationManager.AppSettings["name"]);
-                //userPasswordField.SendKeys(ConfigurationManager.AppSettings["email"]);
                 userNameField.SendKeys(firstName + " " + lastName);
                 userPasswordField.SendKeys(email);
 
@@ -42,7 +40,7 @@ namespace HockeySignUpCore
                 while (driver.FindElementByTagName("body").Text.Contains("Reservations may not be made until 24 hours prior to the start time of the class.") & (x <= 15000))
                 {
                     driver.Navigate().Back();
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(500);
                     x++;
                     driver.FindElementByXPath("//button[@type='submit'][text()='Make Reservation']").Click();
                 }
@@ -53,7 +51,7 @@ namespace HockeySignUpCore
                 //File.WriteAllText("result.txt", result);
 
                 // Take a screenshot and save it into screen.png 
-                driver.GetScreenshot().SaveAsFile(@"ScreenShot.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
+                driver.GetScreenshot().SaveAsFile(firstName + ".png", OpenQA.Selenium.ScreenshotImageFormat.Png);
                 //driver.GetScreenshot().SaveAsFile(@"D:\repo\dotnetCoreHockeySignUp\HockeySignUpCore\bin\Debug\netcoreapp2.1\SPF.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
                 driver.Close();
             }
