@@ -35,7 +35,7 @@ namespace HockeySignUpCore
 
                 // Click the login button
                 loginButton.Click();
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(1000);
 
                 // Grab all the text within the body tag and re-try the login
                 int x = 1;
