@@ -33,15 +33,17 @@ namespace HockeySignUpCore
 
                 // Click the login button
                 loginButton.Click();
-                System.Threading.Thread.Sleep(1000);
+                //System.Threading.Thread.Sleep(250);
 
                 // Grab all the text within the body tag and re-try the login
                 int x = 1;
                 while (driver.FindElementByTagName("body").Text.Contains("Reservations may not be made until 24 hours prior to the start time of the class.") & (x <= 15000))
                 {
+                    //It's too early to signup, so go back to form and try again
                     driver.Navigate().Back();
-                    System.Threading.Thread.Sleep(500);
+                    System.Threading.Thread.Sleep(250);
                     x++;
+                    //form will be populated w the previous name and email values...re-submit
                     driver.FindElementByXPath("//button[@type='submit'][text()='Make Reservation']").Click();
                 }
 
