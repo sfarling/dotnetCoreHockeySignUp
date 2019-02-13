@@ -41,7 +41,7 @@ namespace HockeySignUpCore
                 {
                     //It's too early to signup, so go back to form and try again
                     driver.Navigate().Back();
-                    System.Threading.Thread.Sleep(250);
+                    //System.Threading.Thread.Sleep(250);
                     x++;
                     //form will be populated w the previous name and email values...re-submit
                     driver.FindElementByXPath("//button[@type='submit'][text()='Make Reservation']").Click();
