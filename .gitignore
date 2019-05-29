@@ -375,3 +375,6 @@ YMCA/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.png
 HockeySignUpCore/chromedriver.exe
 HockeySignUpCore/HockeySignUpCore.csproj
+*.sln
+.DS_Store
+.DS_Store
