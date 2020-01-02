@@ -385,3 +385,5 @@ HockeySignUpCore/HockeySignUpCore.csproj
 HockeySignUpCore.sln
 HockeySignUpCore/HockeySignUpCore.csproj
 .DS_Store
+*.csproj
+HockeySignUpCore/HockeySignUpCore.csproj
